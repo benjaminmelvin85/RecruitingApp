@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Top 5 Accounts by Annual Revenue">
+        <div class="slds-m-around_medium">
+            <template for:each={records} for:item="record">
+                <div key={record.Id} class="slds-var-m-around_medium">
+                <c-acct-card name={record.Name} account-id={record.Id} annual-revenue={record.AnnualRevenue} phone={record.Phone} website={record.Website} onselect={handleSelect}></c-acct-card>
+            </div>
+            </template>
+            <div slot="actions">
+                <lightning-button title="Create New Account" label="New" onclick={createAcct}></lightning-button>
+            </div>
+        </div>
+        <template if:true={accounts}>
+            <lightning-map map-markers={accounts} zoom-level={zoomlevel} list-view="auto" class="map-container"></lightning-map>
+        </template>
+    </lightning-card>
+
+</template>

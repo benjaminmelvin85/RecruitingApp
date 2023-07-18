@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Related Cases" icon-name="standard:case">
+        <template if:true={records}>
+            <template for:each={records} for:item="record">
+                <div key={record.Id}>
+                    <c-case-card
+                        case-number={record.fields.CaseNumber.value}
+                        subject={record.fields.Subject.value}
+                        status={record.fields.Status.value}
+                        priority={record.fields.Priority.value}
+                        case-id={record.fields.Id.value}
+                    ></c-case-card>
+                </div>
+            </template>
+        </template>
+        <template if:true={errors}>
+            <p>Error retrieving records.</p>
+        </template>
+    </lightning-card>
+</template>

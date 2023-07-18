@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Related Records" icon-name="standard:account">
+        <lightning-accordion allow-multiple-sections-open="">
+            <lightning-accordion-section name="A" label={oppLabel}>
+                <div class="slds-var-m-around_medium">
+                    <c-opportunity-list record-id={accountId} onoppcount={updateOppLabel}></c-opportunity-list>
+                </div>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="B" label={caseLabel}>
+                <div class="slds-var-m-around_medium">
+                    <c-case-list account-id={accountId} oncasecount={updateCaseLabel}></c-case-list>
+                </div>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </lightning-card>
+</template>

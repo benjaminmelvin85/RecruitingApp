@@ -1,0 +1,10 @@
+<template>
+    <lightning-card>
+        <h1 slot="title">Top {objectName}s</a></h1>
+            <template for:each={displayRecords} for:item="rec">
+                <div key={rec.Id}>
+               <c-dynamic-card-displayer record-name={rec.Name} field-name={vfieldName}></c-dynamic-card-displayer>
+                </div>
+            </template>
+    </lightning-card>
+</template>

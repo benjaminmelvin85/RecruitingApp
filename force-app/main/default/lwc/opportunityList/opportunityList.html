@@ -1,0 +1,61 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-var-m-bottom_small">
+            <div class="slds-col">
+                <lightning-combobox name="Progress" label="Stage Filter" value="All" varient="label-hidden"
+                    options={options} onchange={handleChange}></lightning-combobox>
+            </div>
+            <div class="slds-col">
+                <lightning-radio-group name="modeToggle" label="Display Mode" options={displayOptions} value={selectedMode}
+                    onchange={handleModeChange} type="button"></lightning-radio-group>
+            </div>
+        </div>
+        <div class="slds-tile slds-var-m-bottom_small">
+
+            <div class="slds-tile__detail">
+                <dl class="slds-list_horizontal slds-wrap">
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Total Records">Record Count:
+                    </dt>
+                    <dd class="slds-item_detail slds-truncate" title="Value of Record Count">{totalRecords}</dd>
+
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Total Amount">Total Amount:
+                    </dt>
+                    <dd class="slds-item_detail slds-truncate" title="Value of Total Ammount">
+                        <lightning-formatted-number value={totalAmount}
+                            format-style="currency"></lightning-formatted-number>
+                    </dd>
+
+                </dl>
+            </div>
+
+
+        </div>
+        <template if:true={dataToDisplay}>
+            <template if:true={tableMode}>
+                
+                <div class="slds-border_top slds-border_bottom slds-border_right slds-border_left">
+                    <c-custom-data-types data={displayedOpps} key-field="Id" columns={columns} 
+                    hide-checkbox-column onrowaction={handleRowAction} draft-values={draftValues} onsave={handleStuff}></c-custom-data-types>
+                </div>
+                <template if:true={openModal}>
+                    <c-opp-record-form record-id={oppId} onclose={closeModWindow} onsuccess={handleSuccess} oncancel={closeModWindow}></c-opp-record-form>
+                </template>
+            
+
+            </template>
+            <template if:false={tableMode}>
+                <template for:each={displayedOpps} for:item="opp">
+                    <div key={opp.Id}>
+                        <c-opp-card name={opp.Name} amount={opp.Amount} stage={opp.StageName} close-date={opp.CloseDate}
+                            opp-id={opp.Id} onmodx={handleOppUpdate}></c-opp-card>
+                    </div>
+                </template>
+
+            </template>
+
+        </template>
+        <template if:false={dataToDisplay}>
+            <p>No records match the current filter</p>
+        </template>
+    </lightning-card>
+</template>

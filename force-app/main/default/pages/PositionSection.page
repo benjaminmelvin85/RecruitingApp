@@ -1,0 +1,10 @@
+<apex:page standardController="Position__c" lightningStylesheets="true" extensions="PositionDisplayReviews_EXT">
+<apex:pageBlock>
+    <apex:pageBlockTable var = 'rev' value="{!reviews}">
+        <apex:column value="{!rev.Cultural_Fit__c}"></apex:column>
+        <apex:column value="{!rev.Business_Skills__c}"></apex:column>
+        <apex:column value="{!rev.Technical_Skills__c}"></apex:column>
+        <apex:column value="{!rev.Recommended__c}"></apex:column>
+    </apex:pageBlockTable>
+</apex:pageBlock>
+</apex:page>

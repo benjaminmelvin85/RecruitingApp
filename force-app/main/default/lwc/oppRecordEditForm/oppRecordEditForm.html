@@ -1,0 +1,30 @@
+<template>
+<lightning-button label={buttonLabel} onclick={changeMode}></lightning-button>
+<template if:true={editMode}>
+    <lightning-record-edit-form
+        object-api-name="Opportunity"
+        record-id={recordId}
+        onsuccess={changeMode}>
+        <lightning-output-field field-name="AccountId"></lightning-output-field>
+        <lightning-input-field field-name="Name"></lightning-input-field>
+        <lightning-input-field field-name="StageName"></lightning-input-field>
+        <lightning-input-field field-name="Amount"></lightning-input-field>
+        <lightning-input-field field-name="CloseDate"></lightning-input-field>
+        <lightning-input-field field-name="CurrentGenerators__c"></lightning-input-field>
+        <lightning-button label="Save" type="Submit"></lightning-button>
+    </lightning-record-edit-form>
+</template>
+<template if:false={editMode}>
+    <lightning-record-view-form
+        object-api-name="Opportunity"
+        record-id={recordId}>
+        <lightning-output-field field-name="AccountId"></lightning-output-field>
+        <lightning-output-field field-name="Name"></lightning-output-field>
+        <lightning-output-field field-name="StageName"></lightning-output-field>
+        <lightning-output-field field-name="Amount"></lightning-output-field>
+        <lightning-output-field field-name="CloseDate"></lightning-output-field>
+        <lightning-output-field field-name="CurrentGenerators__c"></lightning-output-field>
+      
+    </lightning-record-view-form>
+</template>
+</template>

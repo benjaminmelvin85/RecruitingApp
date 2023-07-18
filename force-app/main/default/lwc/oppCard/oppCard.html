@@ -1,0 +1,27 @@
+<template>
+    <lightning-card icon-name="standard:opportunity">
+        <h1 slot="title"><a onclick={viewRecord}>{name}</a></h1>
+        <div class="slds-tile">
+            <div class="slds-tile__detail">
+                <dl class="slds-list_horizontal slds-wrap">
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Stage Name">Stage:</dt>
+                    <dd class="slds-item_detail slds-truncate" title="Value of Stage Name">{stage}</dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Opportunity Amount">Amount:</dt>
+                    <dd class="slds-item_detail slds-truncate" title="Value of Amount">
+                        <lightning-formatted-number value={amount} format-style="currency"></lightning-formatted-number>
+                    </dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Opportunity Close Date">Close Date:</dt>
+                    <dd class="slds-item_detail slds-truncate" title="Value of Close Date">
+                        <lightning-formatted-date-time value={closeDate}></lightning-formatted-date-time>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div slot="actions" >
+            <lightning-icon icon-name="utility:edit" size="x-small" onclick={openModWindow}></lightning-icon>
+        </div>
+    </lightning-card>
+    <template if:true={openModal}>
+        <c-opp-record-form record-id={oppId} onclose={closeModWindow} onsuccess={handleSuccess} oncancel={closeModWindow}></c-opp-record-form>
+    </template>
+</template>

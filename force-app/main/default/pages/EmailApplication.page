@@ -1,0 +1,4 @@
+<apex:page standardController="Application__c" extensions="EmailController" action="{!emailApplication}">
+    <p>Emailing Applicaiton.....</p>
+
+</apex:page>

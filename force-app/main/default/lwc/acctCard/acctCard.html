@@ -1,0 +1,43 @@
+<template>
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-card icon-name="standard:account">
+            <h1 slot="title"><a onclick={handleSelect}>{name}</a></h1>
+            <lightning-tile>
+                <p class="slds-truncate" title="Revenue">Revenue: <lightning-formatted-number value={annualRevenue} format-style="currency"></lightning-formatted-number></p>
+                <p class="slds-truncate" title="Phone">Phone: <lightning-formatted-phone value={phone}></lightning-formatted-phone></p>
+                <p class="slds-truncate" title="Website">Website: <lightning-formatted-url value={website} target="_blank"></lightning-formatted-url></p>
+            </lightning-tile>
+                <lightning-icon icon-name="standard:contact" size="small" onclick={contactDisplay}></lightning-icon>
+                <template if:false={dataLoaded}>
+                    <div class="slds-is-relative">
+                        <lightning-spinner alternative-text="Loading...."></lightning-spinner>
+                    </div>
+                </template>
+                <template if:true={displayContacts}>
+                    <template for:each={contacts} for:item="contact">
+                        <div key={contact.id}>
+                            <ul class="slds-list_horizonal slds-has-dividers_right">
+                                <li class="slds-item">
+                                    <p>{contact.Name}</p>
+                                </li>
+                                <li class="slds-item">
+                                    <p>{contact.Title}</p>
+                                </li>
+                                <li class="slds-item">
+                                    <p>{contact.Phone}</p>
+                                </li>
+                                <li class="slds-item">
+                                    <p>{contact.Email}</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </template>
+                </template>
+                <div slot="actions">
+                    <lightning-icon title="Credit Check" icon-name="utility:currency" size="small" onclick={checkCredit}></lightning-icon>
+
+                </div>
+        </lightning-card>
+       
+    </div> 
+</template>

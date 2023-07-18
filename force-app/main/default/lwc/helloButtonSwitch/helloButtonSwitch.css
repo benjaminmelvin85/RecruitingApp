@@ -1,0 +1,13 @@
+.example1 {
+    font-family: 'Times News Roman', Times, serif; background-color: lightblue;
+    border-color: yellow;
+    border-width: 5px;
+    border-style: solid;
+
+}
+.example2 {
+    border-width: thick; 
+    border-color: red; 
+    border-style: solid; 
+    background-color: lightgreen;
+}

@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Opportunity List">
+        <template if:true={opportunities}>
+            <lightning-layout multiple-rows="true">
+                <template for:each={opportunities} for:item="opportunity">
+                    <lightning-layout-item key={opportunity.Id} size="6" small-device-size="12" medium-device-size="6" large-device-size="4">
+                        <lightning-card>
+                            <div class="slds-p-around_small">
+                                <p><b>Name:</b> {opportunity.Name}</p>
+                                <p><b>Stage:</b> {opportunity.StageName}</p>
+                                <p><b>Amount:</b> {opportunity.Amount}</p>
+                            </div>
+                        </lightning-card>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </template>
+        <template if:false={opportunities}>
+            <div class="slds-p-around_small">
+                No opportunities available.
+            </div>
+        </template>
+    </lightning-card>
+</template>
